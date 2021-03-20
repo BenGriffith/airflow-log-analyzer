@@ -1,0 +1,38 @@
+[2021-03-16 00:54:55,106] {{taskinstance.py:670}} INFO - Dependencies all met for <TaskInstance: marketvol.query_data 2021-03-16T00:54:27.286429+00:00 [queued]>
+[2021-03-16 00:54:55,169] {{taskinstance.py:670}} INFO - Dependencies all met for <TaskInstance: marketvol.query_data 2021-03-16T00:54:27.286429+00:00 [queued]>
+[2021-03-16 00:54:55,169] {{taskinstance.py:880}} INFO - 
+--------------------------------------------------------------------------------
+[2021-03-16 00:54:55,169] {{taskinstance.py:881}} INFO - Starting attempt 1 of 3
+[2021-03-16 00:54:55,169] {{taskinstance.py:882}} INFO - 
+--------------------------------------------------------------------------------
+[2021-03-16 00:54:55,192] {{taskinstance.py:901}} INFO - Executing <Task(PythonOperator): query_data> on 2021-03-16T00:54:27.286429+00:00
+[2021-03-16 00:54:55,196] {{standard_task_runner.py:54}} INFO - Started process 13627 to run task
+[2021-03-16 00:54:55,259] {{standard_task_runner.py:77}} INFO - Running: ['airflow', 'run', 'marketvol', 'query_data', '2021-03-16T00:54:27.286429+00:00', '--job_id', '30', '--pool', 'default_pool', '--raw', '-sd', 'DAGS_FOLDER/stock-market-dag.py', '--cfg_path', '/tmp/tmp0fccqxba']
+[2021-03-16 00:54:55,260] {{standard_task_runner.py:78}} INFO - Job 30: Subtask query_data
+[2021-03-16 00:54:55,392] {{logging_mixin.py:112}} INFO - Running <TaskInstance: marketvol.query_data 2021-03-16T00:54:27.286429+00:00 [running]> on host 6ef8928b229b
+[2021-03-16 00:54:55,491] {{taskinstance.py:1150}} ERROR - No columns to parse from file
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 984, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/lib/python3.7/site-packages/airflow/operators/python_operator.py", line 113, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.7/site-packages/airflow/operators/python_operator.py", line 118, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/usr/local/airflow/dags/stock-market-dag.py", line 66, in query
+    apple_df = pd.read_csv('/usr/local/spark/resources/data/query/aapl-data.csv')
+  File "/usr/local/lib/python3.7/site-packages/pandas/io/parsers.py", line 610, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/usr/local/lib/python3.7/site-packages/pandas/io/parsers.py", line 462, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/usr/local/lib/python3.7/site-packages/pandas/io/parsers.py", line 819, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/usr/local/lib/python3.7/site-packages/pandas/io/parsers.py", line 1050, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/usr/local/lib/python3.7/site-packages/pandas/io/parsers.py", line 1898, in __init__
+    self._reader = parsers.TextReader(self.handles.handle, **kwds)
+  File "pandas/_libs/parsers.pyx", line 521, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+[2021-03-16 00:54:55,511] {{taskinstance.py:1194}} INFO - Marking task as UP_FOR_RETRY. dag_id=marketvol, task_id=query_data, execution_date=20210316T005427, start_date=20210316T005455, end_date=20210316T005455
+[2021-03-16 00:55:00,024] {{local_task_job.py:102}} INFO - Task exited with return code 1
+[2021-03-16 00:56:03,362] {{taskinstance.py:664}} INFO - Dependencies not met for <TaskInstance: marketvol.query_data 2021-03-16T00:54:27.286429+00:00 [None]>, dependency 'Trigger Rule' FAILED: Task's trigger rule 'all_success' requires all upstream tasks to have succeeded, but found 2 non-success(es). upstream_tasks_state={'total': 2, 'successes': 0, 'skipped': 0, 'failed': 0, 'upstream_failed': 0, 'done': 0}, upstream_task_ids={'move_tesla', 'move_apple'}
+[2021-03-16 00:56:03,364] {{local_task_job.py:90}} INFO - Task is not able to be run

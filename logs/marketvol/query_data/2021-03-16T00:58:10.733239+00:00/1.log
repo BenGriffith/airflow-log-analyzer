@@ -1,0 +1,31 @@
+[2021-03-16 00:58:41,738] {{taskinstance.py:670}} INFO - Dependencies all met for <TaskInstance: marketvol.query_data 2021-03-16T00:58:10.733239+00:00 [queued]>
+[2021-03-16 00:58:41,817] {{taskinstance.py:670}} INFO - Dependencies all met for <TaskInstance: marketvol.query_data 2021-03-16T00:58:10.733239+00:00 [queued]>
+[2021-03-16 00:58:41,817] {{taskinstance.py:880}} INFO - 
+--------------------------------------------------------------------------------
+[2021-03-16 00:58:41,817] {{taskinstance.py:881}} INFO - Starting attempt 1 of 3
+[2021-03-16 00:58:41,818] {{taskinstance.py:882}} INFO - 
+--------------------------------------------------------------------------------
+[2021-03-16 00:58:41,857] {{taskinstance.py:901}} INFO - Executing <Task(PythonOperator): query_data> on 2021-03-16T00:58:10.733239+00:00
+[2021-03-16 00:58:41,866] {{standard_task_runner.py:54}} INFO - Started process 15930 to run task
+[2021-03-16 00:58:41,946] {{standard_task_runner.py:77}} INFO - Running: ['airflow', 'run', 'marketvol', 'query_data', '2021-03-16T00:58:10.733239+00:00', '--job_id', '42', '--pool', 'default_pool', '--raw', '-sd', 'DAGS_FOLDER/stock-market-dag.py', '--cfg_path', '/tmp/tmphdc81gn9']
+[2021-03-16 00:58:41,947] {{standard_task_runner.py:78}} INFO - Job 42: Subtask query_data
+[2021-03-16 00:58:42,014] {{logging_mixin.py:112}} INFO - Running <TaskInstance: marketvol.query_data 2021-03-16T00:58:10.733239+00:00 [running]> on host 6ef8928b229b
+[2021-03-16 00:58:42,137] {{logging_mixin.py:112}} INFO -    2021-03-15 09:30:00-04:00  121.26000213623047  ...  121.26000213623047.3  2500246
+0  2021-03-15 09:31:00-04:00          121.260002  ...            121.190002   367765
+1  2021-03-15 09:32:00-04:00          121.190002  ...            120.839996   645830
+2  2021-03-15 09:33:00-04:00          120.849998  ...            120.769997   567500
+3  2021-03-15 09:34:00-04:00          120.919998  ...            120.889999   369702
+4  2021-03-15 09:35:00-04:00          121.125000  ...            121.099998   405570
+
+[5 rows x 7 columns]
+[2021-03-16 00:58:42,182] {{logging_mixin.py:112}} INFO -    2021-03-15 09:30:00-04:00  691.5349731445312  ...  691.5349731445312.4  844392
+0  2021-03-15 09:31:00-04:00         691.239990  ...           690.760010  160428
+1  2021-03-15 09:32:00-04:00         691.819885  ...           687.387695  154681
+2  2021-03-15 09:33:00-04:00         687.679993  ...           687.323303  211310
+3  2021-03-15 09:34:00-04:00         689.955017  ...           689.583191  134056
+4  2021-03-15 09:35:00-04:00         689.500000  ...           690.849976  106253
+
+[5 rows x 7 columns]
+[2021-03-16 00:58:42,183] {{python_operator.py:114}} INFO - Done. Returned value was: None
+[2021-03-16 00:58:42,212] {{taskinstance.py:1070}} INFO - Marking task as SUCCESS.dag_id=marketvol, task_id=query_data, execution_date=20210316T005810, start_date=20210316T005841, end_date=20210316T005842
+[2021-03-16 00:58:46,734] {{local_task_job.py:102}} INFO - Task exited with return code 0
